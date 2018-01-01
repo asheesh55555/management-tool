@@ -40,3 +40,12 @@
     <%= f.submit %>
   </p>
 <% end %>
+<%if @tasks.first.present?%>
+
+<%@tasks.each do |t|%>
+<p>
+  <strong>Task Assigned:</strong>
+  <%= Task.find(t.task_id).name %>
+</p>
+<%end%>
+<%end%>

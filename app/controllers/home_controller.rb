@@ -34,12 +34,22 @@ class HomeController < ApplicationController
         @team = Team.find(params[:team])    
 	end
 	def assign_project_to_team_member_submit
-		UserProject.create(user_id: params[:user], project_id: params[:project])
 		@user = User.find(params[:user])
 		@project = Project.find(params[:project])
+		@tasks=MemberTask.where(team_id: User.find(params[:user]).team.id,  user_id: params[:user], project_id: params[:project])
+
+		if UserProject.where(user_id: params[:user], project_id: params[:project]).first.present?
+            flash[:notice] = "This Project already assingned to this member please assign task."
+
+		else
+		   UserProject.create(user_id: params[:user], project_id: params[:project])
+            flash[:notice] = "Project assigned."
+		end
 	end
 	def project_task_submit
-		MemberTask.create(team_id: params[:team],  user_id: params[:user], project_id: params[:project], task_id: params[:task])
+		if params[:task].present?
+		   MemberTask.create(team_id: params[:team],  user_id: params[:user], project_id: params[:project], task_id: params[:task])
+	    end
 
 		@user = User.find(params[:user])
 		@project = Project.find(params[:project])
