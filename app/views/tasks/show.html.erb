@@ -1,9 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Task:</strong>
   <%= @task.name %>
 </p>
+<%if @task.dependencies.first.present? %>
+    <p>
+     <strong>Dependencies:</strong>
+    </p>
+	<% @task.dependencies.each do |dependency| %>
+     <p>
+     <%= dependency.name%>
+    </p>
+	<%end%>
+<%end%>
 
+<%if current_user.admin == true%>
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
+<% else %>
+<%= link_to 'Back', all_assigned_task_user_path%>
+<% end %>

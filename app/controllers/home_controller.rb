@@ -59,4 +59,8 @@ class HomeController < ApplicationController
 	def all_assigned_task
 		
 	end
+
+	def all_assigned_task_user
+		
+	end
 end

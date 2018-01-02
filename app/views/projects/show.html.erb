@@ -40,6 +40,8 @@
   <%= @project.end_date %>
 </p>
 
+<%if current_user.admin == true %>
+
 <% if @project.tasks.first.present? %>
       <% @project.tasks.each do |task|%>
       <p>
@@ -75,3 +77,7 @@
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+<% else %>
+  <%= link_to 'Back', all_assigned_task_user_path %>
+<% end %>

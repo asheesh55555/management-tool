@@ -21,6 +21,7 @@ post 'assign/project/team_member/submit', :to => 'home#assign_project_to_team_me
 
 post 'project/task/submit', :to => 'home#project_task_submit'
 get 'all/assigned_task', :to => 'home#all_assigned_task'
+get 'all/assigned/task/user', :to => 'home#all_assigned_task_user'
 
 
 
