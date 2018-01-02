@@ -1,4 +1,4 @@
-
+<%if current_user.team.present?%>
 <p>
   <strong>Team:</strong>
   <%= current_user.team.name %>
@@ -26,4 +26,6 @@
 						<%end%>
 
 				<%end%>
+<% end %>				
+
 
