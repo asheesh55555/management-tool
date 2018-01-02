@@ -20,9 +20,9 @@
     <select name="project">
 
         <%@projects.each do |p|%>
-        <%unless p.teams.first.present?%>
+        <%#unless p.teams.first.present?%>
         <option value="<%=p.id%>"><%=p.name%></option>
-        <%end%>
+        <%#end%>
         <%end%>
     </select>
   </div>

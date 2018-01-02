@@ -1,4 +1,10 @@
 <%if current_user.admin == true%>
+        <p>
+		<%= link_to 'Create new Client', new_client_path %>
+		</p>
+		<p>
+		<%= link_to 'Create new Technology', new_technology_path %>
+		</p>
 		<p>
 		<%= link_to 'Create new Project', new_project_path %>
 		</p>

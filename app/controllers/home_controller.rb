@@ -23,8 +23,14 @@ class HomeController < ApplicationController
 	end
 
 	def assign_project_submit
-		ProjectTeam.create(team_id: params[:team], project_id: params[:project])
 		@teams	=Team.all
+		if ProjectTeam.where(team_id: params[:team], project_id: params[:project]).first.present?
+			flash[:notice] = "This Project already assingned to this Team."
+		else
+			ProjectTeam.create(team_id: params[:team], project_id: params[:project])
+		end
+		
+		
 	end
 
 	def assigned_project_to_team

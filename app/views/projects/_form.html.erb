@@ -23,7 +23,12 @@
 
   <div class="field">
     <%= form.label :technology %>
-    <%= form.text_field :technology, id: :project_technology %>
+    <select name="technology">
+
+        <%Technology.all.each do |t|%>
+        <option value="<%=t.name%>"><%=t.name%></option>
+        <%end%>
+    </select>
   </div>
 
   <div class="field">
@@ -39,11 +44,16 @@
         <option value="Time & Material">Time & Material</option>
     </select>
   </div>
-
-  <div class="field">
+  
+ <div class="field">
     <%= form.label :client_name %>
-    <%= form.text_field :client_name, id: :project_client_name %>
-  </div>
+    <select name="client_name">
+
+        <%Client.all.each do |c|%>
+        <option value="<%=c.name%>"><%=c.name%></option>
+        <%end%>
+    </select>
+  </div> 
 
  <div class="field">
     <%= form.label :start_date %>

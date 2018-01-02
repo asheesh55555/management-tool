@@ -26,6 +26,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.project_type = params[:project_type]
+    @project.client_name = params[:client_name]
+    @project.technology = params[:technology]
    # @project.user_id = current_user.id
     respond_to do |format|
       if @project.save
