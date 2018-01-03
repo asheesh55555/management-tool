@@ -1,0 +1,16 @@
+<%= form_for :assign_project, url: assigned_team_path do |f| %>
+  <div class="field">
+    <label><b>Team Name:</b></label>
+    <%= f.label :team, @team.name %>
+    <%= f.hidden_field :team_id, value: @team.id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :project %>
+    <%= f.select("project_id", @projects.collect {|p| [ p.name, p.id ] }, { include_blank: true }, :prompt => 'Select')%>
+  </div>
+  
+  <p>
+    <%= f.submit 'Assign', class: "btn btn-primary"%>
+  </p>
+<% end %>

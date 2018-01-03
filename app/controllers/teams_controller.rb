@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
-    before_action :set_permission, only: [:new, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :assign, :assigned]
+  before_action :set_permission, only: [:new, :edit, :update, :destroy]
 
 
   # GET /teams
@@ -63,6 +63,21 @@ class TeamsController < ApplicationController
     end
   end
 
+  def assign
+    @projects = Project.all
+  end
+
+  def assigned
+    if ProjectTeam.where(assign_params).first.present?
+      flash[:notice] = "This Project already assingned to this Team."
+    else
+      ProjectTeam.create(assign_params)
+      flash[:notice] = "This Project assingned to this Team successfully"
+    end
+    redirect_to team_path()
+  end
+
+
   private
 
    def set_permission
@@ -78,5 +93,9 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name)
+    end
+
+    def assign_params
+      params.require(:assign_project).permit(:project_id, :team_id)
     end
 end

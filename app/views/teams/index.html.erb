@@ -16,7 +16,8 @@
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><li class="list-group-item"><%= link_to "Assign Project to #{team.name}", assign_project_path %></li></td>
+        <td><li class="list-group-item"><%= link_to "Assign Project to #{team.name}", assign_team_path(team) %></li></td>
+        <!-- <td><li class="list-group-item"><%= link_to "Assign Project to #{team.name}", assign_project_path %></li></td> -->
         <td><li class="list-group-item"><%= link_to "Assign Members to #{team.name}", add_member_path %></li> 
 
         </td>
