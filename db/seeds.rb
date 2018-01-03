@@ -13,8 +13,10 @@ admin = User.create!(email: "admin@gmail.com",
 admin.add_role :admin
 
 #newuser
-user = User.create!(email: "user@gmail.com", password: "password", password_confirmation: "password")
-user.add_role :newuser
+['it@gamil.com', 'web@gmail.com', 'user@gmail.com'].each do |email|
+  user = User.create!(email: email, password: "password", password_confirmation: "password")
+  user.add_role :newuser
+end
 
 ['IT', 'Web'].each do |tech|
   Technology.create!(name: tech)

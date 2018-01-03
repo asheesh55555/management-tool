@@ -1,50 +1,18 @@
-<% if ApplicationAuthorizer.creatable_by?(current_user) %>
+<ul class="list-group">
+  <% if ApplicationAuthorizer.creatable_by?(current_user) %>
+    <li class="list-group-item"><%= link_to 'All Projects', projects_path %></li>
+    <li class="list-group-item"><%= link_to 'Teams', teams_path %></li>
+    
+    <% if Team.any? %>
+      <li class="list-group-item"><%= link_to 'Assigned Projects to Teams', assigned_project_path %></li>
+  	<% end %>
 
-        <p>
-		<%= link_to 'Create new Client', new_client_path %>
-		</p>
-		<p>
-		<%= link_to 'Create new Technology', new_technology_path %>
-		</p>
-		<p>
-		<%= link_to 'Create new Project', new_project_path %>
-		</p>
-		<p>
-		<%= link_to 'All Projects', projects_path %>
-		</p>
+		<% if MemberTask.any? %>
+		  <li class="list-group-item"><%= link_to 'All Assigned Task ', all_assigned_task_path %></li>
+		<% end %>
 
-		<p>
-		<%= link_to 'Create Team', new_team_path %>
-		</p>
+  <% else %>
+    <li class="list-group-item"><%= link_to 'All Project and Task', all_assigned_task_user_path %></li>
+  <% end %>
 
-		<%if Team.first.present?%>
-				<p>
-				   <%= link_to 'Add Team Members', add_member_path %>
-				</p>
-				<p>
-				   <%= link_to 'Team and Members', team_members_path %>
-				</p>
-				<p>
-				   <%= link_to 'Assign Project to Team', assign_project_path %>
-				</p>
-				<p>
-				   <%= link_to 'All Assigned Project to Team', assigned_project_path %>
-				</p>
-		<%end%>
-
-		<%Team.all.each do |team| %>
-				<%if team.users.first.present? && team.projects.first.present?%>
-						<p>
-						<%= link_to "Assign Project and task to #{team.name} members", assign_project_team_member_path(team: team) %>
-						</p>
-				<%end%>
-		<%end%>
-
-		<%if MemberTask.first.present?%>
-		    <%= link_to 'All Assigned Task', all_assigned_task_path %>
-		<%end%>
-<% else %>
-   <p>
-   	  <%= link_to 'All Project and Task', all_assigned_task_user_path %>
-   </p>
-<% end %>
+</ul>

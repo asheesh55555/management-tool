@@ -1,19 +1,2 @@
-<%@teams.each do |t|%>
-<p>
-  <strong>Team:</strong>
-  <%= t.name %>
-</p>
-	<%if t.projects.first.present?%>
-		<%t.projects.each do |p|%>
-		<p>
-		  <strong>Project:</strong>
-		  <%= p.name %>
-		</p>
-		<%end%>
-	<%end%>
-<%end%>
-
-<p>
+<%= render 'teams/team', teams: @teams, assigned: false  %>
 <%= link_to 'Back', root_path %>
-</p>
-
