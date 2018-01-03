@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-root to: "home#index"
+root to: "home#dashboard"
 get 'add/member', :to => 'home#add_member_to_team_form'
 post 'submit/member', :to => 'home#add_member_to_team'
 get 'team/members', :to => 'home#team_and_members'

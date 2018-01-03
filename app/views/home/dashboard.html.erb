@@ -1,4 +1,4 @@
-<%if current_user.admin == true%>
+<% if current_user.admin? %>
         <p>
 		<%= link_to 'Create new Client', new_client_path %>
 		</p>

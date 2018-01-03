@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	def index
+	def dashboard
 		
 	end
 	def add_member_to_team_form

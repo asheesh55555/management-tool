@@ -14,7 +14,7 @@
 	<%end%>
 <%end%>
 
-<%if current_user.admin == true%>
+<% if current_user.admin? %>
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
 <% else %>
