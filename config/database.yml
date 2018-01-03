@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: management_tool
+  database: management_tool1
   pool: 5
   username: root
   password: root

@@ -1,6 +1,10 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
+before_action :set_permission, only: [:new, :edit, :update, :destroy]
+
+
+  
   # GET /clients
   # GET /clients.json
   def index
@@ -62,6 +66,13 @@ class ClientsController < ApplicationController
   end
 
   private
+
+
+    def set_permission
+      if !ApplicationAuthorizer.creatable_by?(current_user)
+        redirect_to root_path, notice: 'You are not Authorize.' 
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_client
       @client = Client.find(params[:id])

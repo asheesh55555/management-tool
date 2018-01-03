@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_permission, only: [:new, :edit, :update, :destroy]
+
 
   # GET /projects
   # GET /projects.json
@@ -25,9 +27,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    @project.project_type = params[:project_type]
-    @project.client_name = params[:client_name]
-    @project.technology = params[:technology]
+    
    # @project.user_id = current_user.id
     respond_to do |format|
       if @project.save
@@ -65,6 +65,13 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+
+    def set_permission
+      if !ApplicationAuthorizer.creatable_by?(current_user)
+        redirect_to root_path, notice: 'You are not Authorize.' 
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
@@ -72,6 +79,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :descriptions, :technology, :document, :project_type, :client_name, :start_date, :end_date)
+      params.require(:project).permit(:name, :descriptions, :technology, :document, :project_type, :client_name, :cost, :start_date, :end_date)
     end
 end

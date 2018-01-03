@@ -14,15 +14,15 @@ class ApplicationAuthorizer < Authority::Authorizer
   end
 
   def self.creatable_by?(user)
-    user.admin?
+    user.has_role? :admin
   end
 
   def self.updatable_by?(user)
-    user.admin?
+    user.has_role? :admin
   end
 
   def self.deletable_by?(user)
-    user.admin?
+    user.has_role? :admin
   end
 
   def self.readable_by?(user)

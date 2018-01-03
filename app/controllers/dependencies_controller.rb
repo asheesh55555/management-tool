@@ -3,6 +3,7 @@ class DependenciesController < ApplicationController
   before_action :set_project_and_task, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
 
+ 
   # GET /dependencies
   # GET /dependencies.json
   def index

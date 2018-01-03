@@ -29,6 +29,11 @@
 </p>
 
 <p>
+  <strong>Cost:</strong>
+  <%= @project.cost %>
+</p>
+
+<p>
   <strong>Start date:</strong>
   <%= @project.start_date %>
 </p>
@@ -38,7 +43,7 @@
   <%= @project.end_date %>
 </p>
 
-<% if current_user.admin? %>
+<% if ApplicationAuthorizer.creatable_by?(current_user) %>
 
 <% if @project.tasks.first.present? %>
       <% @project.tasks.each do |task|%>
