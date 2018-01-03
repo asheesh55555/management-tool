@@ -1,28 +1,21 @@
 <%= form_for :team_member, url: submit_member_path do |f| %>
 
-
   <div class="field">
     <%= f.label :team %>
-    <%#= form.text_field :project_type, id: :project_project_type %>
     <select name="team">
-
         <%@teams.each do |t|%>
-        <option value="<%=t.id%>"><%=t.name%></option>
+           <option value="<%=t.id%>"><%=t.name%></option>
         <%end%>
     </select>
   </div>
   
-
-
   <div class="field">
     <%= f.label :member %>
-    <%#= form.text_field :project_type, id: :project_project_type %>
     <select name="member">
-
         <%@users.each do |u|%>
-        <%unless u.team.present?%>
-        <option value="<%=u.id%>"><%=u.email%></option>
-        <%end%>
+          <%unless u.team.present?%>
+              <option value="<%=u.id%>"><%=u.email%></option>
+          <%end%>
         <%end%>
     </select>
   </div>

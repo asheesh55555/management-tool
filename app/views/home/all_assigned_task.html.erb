@@ -1,29 +1,25 @@
 <%Team.all.each do |team|%>
-
-<p>
-  <strong>Team:</strong>
-  <%= team.name %>
-</p>
-		<%team.users.each do |member|%>
+	<p>
+	<strong>Team:</strong>
+	<%= team.name %>
+	</p>
+	<%team.users.each do |member|%>
 		<p>
-		  <strong>Member:</strong>
-		  <%= member.email %>
+		<strong>Member:</strong>
+		<%= member.email %>
 		</p>
-
-				<%member.projects.each do |project|%>
-				<p>
-				  <strong>Project:</strong>
-				  <%= project.name %>
-				</p>
-						<%@tasks=MemberTask.where(team_id: team.id, user_id: member.id, project_id: project.id)%>
-						<%@tasks.each do |task|%>
-						<p>
-						  <strong>Task:</strong>
-						  <%= Task.find(task.task_id).name %>
-						</p>
-						<%end%>
-
-				<%end%>
+		<%member.projects.each do |project|%>
+			<p>
+			<strong>Project:</strong>
+			<%= project.name %>
+			</p>
+		    <%@tasks=MemberTask.where(team_id: team.id, user_id: member.id, project_id: project.id)%>
+			<%@tasks.each do |task|%>
+			<p>
+			<strong>Task:</strong>
+			  <%= Task.find(task.task_id).name %>
+			</p>
+			<%end%>
 		<%end%>
-
+	<%end%>
 <%end%>

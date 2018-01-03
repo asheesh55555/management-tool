@@ -23,17 +23,13 @@
 				<p>
 				   <%= link_to 'Team and Members', team_members_path %>
 				</p>
-
-
 				<p>
 				   <%= link_to 'Assign Project to Team', assign_project_path %>
 				</p>
-
 				<p>
 				   <%= link_to 'All Assigned Project to Team', assigned_project_path %>
 				</p>
 		<%end%>
-
 
 		<%Team.all.each do |team| %>
 				<%if team.users.first.present? && team.projects.first.present?%>
@@ -45,7 +41,6 @@
 
 		<%if MemberTask.first.present?%>
 		    <%= link_to 'All Assigned Task', all_assigned_task_path %>
-
 		<%end%>
 <% else %>
    <p>

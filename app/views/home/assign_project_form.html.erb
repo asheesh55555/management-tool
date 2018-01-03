@@ -3,26 +3,18 @@
 
   <div class="field">
     <%= f.label :team %>
-    <%#= form.text_field :project_type, id: :project_project_type %>
     <select name="team">
-
         <%@teams.each do |t|%>
-        <option value="<%=t.id%>"><%=t.name%></option>
+           <option value="<%=t.id%>"><%=t.name%></option>
         <%end%>
     </select>
   </div>
-  
-
 
   <div class="field">
     <%= f.label :project %>
-    <%#= form.text_field :project_type, id: :project_project_type %>
     <select name="project">
-
         <%@projects.each do |p|%>
-        <%#unless p.teams.first.present?%>
-        <option value="<%=p.id%>"><%=p.name%></option>
-        <%#end%>
+           <option value="<%=p.id%>"><%=p.name%></option>
         <%end%>
     </select>
   </div>

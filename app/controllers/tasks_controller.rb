@@ -29,25 +29,20 @@ class TasksController < ApplicationController
     #@task = Task.new(task_params)
      @task = @project.tasks.create(task_params)
      redirect_to project_path(@project), notice: 'Task was successfully created.' 
-  
   end
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-   
-       @task.update(task_params)
-       redirect_to project_path(@project), notice: 'Task was successfully updated.'
-      
+    @task.update(task_params)
+    redirect_to project_path(@project), notice: 'Task was successfully updated.'
   end
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
-   
-   redirect_to project_path(@project), notice: 'Task was successfully destroyed.'
-    
+    redirect_to project_path(@project), notice: 'Task was successfully destroyed.'
   end
 
   private

@@ -1,26 +1,19 @@
 <%= form_for :assign_project_team_member, url: assign_project_team_member_submit_path do |f| %>
 
-
   <div class="field">
     <%= f.label :user %>
-    <%#= form.text_field :project_type, id: :project_project_type %>
     <select name="user">
-
         <%@team.users.each do |u|%>
-        <option value="<%=u.id%>"><%=u.email%></option>
+           <option value="<%=u.id%>"><%=u.email%></option>
         <%end%>
     </select>
   </div>
   
-
-
   <div class="field">
     <%= f.label :project %>
-    <%#= form.text_field :project_type, id: :project_project_type %>
     <select name="project">
-
         <%@team.projects.each do |p|%>
-        <option value="<%=p.id%>"><%=p.name%></option>
+           <option value="<%=p.id%>"><%=p.name%></option>
         <%end%>
     </select>
   </div>

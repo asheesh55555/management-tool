@@ -1,19 +1,17 @@
-
 <%@teams.each do |t|%>
-<p>
-  <strong>Team:</strong>
-  <%= t.name %>
-</p>
-<%if t.projects.first.present?%>
-<%t.projects.each do |p|%>
-<p>
-  <strong>Project:</strong>
-  <%= p.name %>
-</p>
+	<p>
+	  <strong>Team:</strong>
+	  <%= t.name %>
+	</p>
+	<%if t.projects.first.present?%>
+		<%t.projects.each do |p|%>
+		<p>
+		  <strong>Project:</strong>
+		  <%= p.name %>
+		</p>
+		<%end%>
+	<%end%>
 <%end%>
-<%end%>
-<%end%>
-
 
 <p>
 <%= link_to 'Back', root_path %>

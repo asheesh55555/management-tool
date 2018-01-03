@@ -1,15 +1,11 @@
-
-
 <p>
   <strong>Team:</strong>
   <%= @user.team.name %>
 </p>
-
 <p>
   <strong>Member:</strong>
   <%= @user.email %>
 </p>
-
 <p>
   <strong>Project:</strong>
   <%= @project.name %>
@@ -18,24 +14,17 @@
 
 <%= form_for :assign_project_task_team_member, url: project_task_submit_path(team: @team, user: @user, project: @project) do |f| %>
 
-
   <div class="field">
     <%= f.label :task %>
-    <%#= form.text_field :project_type, id: :project_project_type %>
     <select name="task">
-
         <%@project.tasks.each do |t|%>
-        <%unless MemberTask.where(task_id: t.id).first.present?%>
-        <option value="<%=t.id%>"><%=t.name%></option>
-        <%end%>
+          <%unless MemberTask.where(task_id: t.id).first.present?%>
+              <option value="<%=t.id%>"><%=t.name%></option>
+          <%end%>
         <%end%>
     </select>
   </div>
-  
 
-
-  
-  
   <p>
     <%= f.submit %>
   </p>

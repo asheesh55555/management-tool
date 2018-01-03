@@ -1,6 +1,5 @@
-<%#= form_with(model: dependency, local: true) do |form| %>
 <%= form_with(model: [ @project, @task, @task.dependencies.build ], local: true) do |form| %>
-
+  
   <div class="field">
     <%= form.label :Add_dependency %>
     <%= form.text_field :name, id: :dependency_name %>
