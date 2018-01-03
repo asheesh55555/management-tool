@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :task %>
-    <select name="task">
+    <select name="task" class="form-control" id="exampleInputEmail1" aria_describedby ="emailHelp">
         <%@project.tasks.each do |t|%>
         <%unless MemberTask.where(task_id: t.id).first.present?%>
         <option value="<%=t.id%>"><%=t.name%></option>
@@ -28,7 +28,7 @@
   </div>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Assign', class: "btn btn-primary"%>
   </p>
 <% end %>
 <%if @tasks.first.present?%>

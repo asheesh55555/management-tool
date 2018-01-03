@@ -3,7 +3,7 @@
 
   <div class="field">
     <%= f.label :team %>
-    <select name="team">
+    <select name="team" class="form-control" id="exampleInputEmail1" aria_describedby ="emailHelp">
         <%@teams.each do |t|%>
            <option value="<%=t.id%>"><%=t.name%></option>
         <%end%>
@@ -12,7 +12,7 @@
 
   <div class="field">
     <%= f.label :project %>
-    <select name="project">
+    <select name="project" class="form-control" id="exampleInputEmail1" aria_describedby ="emailHelp">
         <%@projects.each do |p|%>
            <option value="<%=p.id%>"><%=p.name%></option>
         <%end%>
@@ -20,6 +20,6 @@
   </div>
   
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Assign', class: "btn btn-primary"%>
   </p>
 <% end %>

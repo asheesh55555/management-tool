@@ -2,16 +2,16 @@
 
   <div class="field">
     <%= f.label :team %>
-    <select name="team">
+    <select name="team" class="form-control" id="exampleInputEmail1" aria_describedby ="emailHelp">
         <%@teams.each do |t|%>
            <option value="<%=t.id%>"><%=t.name%></option>
         <%end%>
     </select>
   </div>
   
-  <div class="field">
+  <div class="form-group">
     <%= f.label :member %>
-    <select name="member">
+    <select name="member" class="form-control" id="exampleInputEmail1" aria_describedby ="emailHelp">
         <%@users.each do |u|%>
           <%unless u.team.present?%>
               <option value="<%=u.id%>"><%=u.email%></option>
@@ -21,6 +21,6 @@
   </div>
   
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Add', class: "btn btn-primary" %>
   </p>
 <% end %>

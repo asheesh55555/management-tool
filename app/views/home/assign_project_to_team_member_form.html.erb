@@ -2,7 +2,7 @@
 
   <div class="field">
     <%= f.label :user %>
-    <select name="user">
+    <select name="user" class="form-control" id="exampleInputEmail1" aria_describedby ="emailHelp">
         <%@team.users.each do |u|%>
            <option value="<%=u.id%>"><%=u.email%></option>
         <%end%>
@@ -11,7 +11,7 @@
   
   <div class="field">
     <%= f.label :project %>
-    <select name="project">
+    <select name="project" class="form-control" id="exampleInputEmail1" aria_describedby ="emailHelp">
         <%@team.projects.each do |p|%>
            <option value="<%=p.id%>"><%=p.name%></option>
         <%end%>
@@ -19,6 +19,6 @@
   </div>
   
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Assign', class: "btn btn-primary"%>
   </p>
 <% end %>
