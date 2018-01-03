@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+    before_action :set_permission, only: [:new, :edit, :update, :destroy]
+
 
   # GET /teams
   # GET /teams.json
@@ -62,6 +64,12 @@ class TeamsController < ApplicationController
   end
 
   private
+
+   def set_permission
+      if !ApplicationAuthorizer.creatable_by?(current_user)
+        redirect_to root_path, notice: 'You are not Authorize.' 
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_team
       @team = Team.find(params[:id])

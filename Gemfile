@@ -57,3 +57,7 @@ gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem "rolify"
 gem 'authority'
+gem 'jquery-rails'
+gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
+gem "datetime_picker_rails", github: "graysonwright/datetime_picker_rails"
+
