@@ -16,14 +16,14 @@
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><li class="list-group-item"><%= link_to "Assign Project to #{team.name}", assign_team_path(team) %></li></td>
+        <td><li class="list-group-item"><%= link_to "Assign Project to #{team.name}", assign_project_team_path(team) %></li></td>
         <!-- <td><li class="list-group-item"><%= link_to "Assign Project to #{team.name}", assign_project_path %></li></td> -->
-        <td><li class="list-group-item"><%= link_to "Assign Members to #{team.name}", add_member_path %></li> 
+        <td><li class="list-group-item"><%= link_to "Assign Members to #{team.name}", assign_member_team_path(team) %></li> 
 
         </td>
         <td>
           <% if team.users.any? && team.projects.any?%>
-            <li class="list-group-item"><%= link_to "Assign Project tasks to #{team.name} members", assign_project_team_member_path(team: team) %></li>
+            <li class="list-group-item"><%= link_to "Assign Project tasks to #{team.name} members", assign_member_project_team_path(team) %></li>
           <% end %>
         </td>
       </tr>

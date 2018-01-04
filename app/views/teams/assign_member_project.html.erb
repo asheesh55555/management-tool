@@ -1,0 +1,19 @@
+<%= form_for :assign_project_member, url: assigned_member_project_team_path(@team) do |f| %>
+
+   <div class="field">
+    <%= f.label :user %>
+    <%= f.select("user_id", @users.collect {|u| [ u.email, u.id ] })%>
+  </div>
+  
+
+  <div class="field">
+    <%= f.label :project %>
+    <%= f.select("project_id", @projects.collect {|p| [ p.name, p.id ] })%>
+  </div>
+
+  <p>
+    <%= f.submit 'Assign', class: "btn btn-primary"%>
+  </p>
+<% end %>
+
+

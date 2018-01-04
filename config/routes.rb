@@ -5,8 +5,14 @@ Rails.application.routes.draw do
   resources :technologies
   resources :teams do
     member do
-      get :assign
-      post :assigned
+      get :assign_project
+      post :assigned_project
+      get :assign_member
+      post :assigned_member
+      get :assign_member_project
+      post :assigned_member_project
+      post :assigned_member_project_task
+
     end
   end
   resources :projects do
