@@ -13,9 +13,8 @@
     <% @dependencies.each do |dependency| %>
       <tr>
         <td><%= dependency.name %></td>
-        <td><%= link_to 'Show', dependency %></td>
-        <td><%= link_to 'Edit', edit_dependency_path(dependency) %></td>
-        <td><%= link_to 'Destroy', dependency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project_task_dependency_path(@project, @task, dependency) %></td>
+        <td><%= link_to 'Edit', edit_project_task_dependency_path(@project, @task, dependency) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +22,10 @@
 
 <br>
 
-<%= link_to 'New Dependency', new_dependency_path %>
+<%= link_to 'New Dependency', new_project_task_dependency_path(@project, @task) %> | 
+
+
+<%= link_to 'Back to Tasks', project_tasks_path(@project) %>| 
+
+
+<%= link_to 'Back to prtojects',projects_path %>

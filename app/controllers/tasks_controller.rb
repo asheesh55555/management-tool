@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = @project.tasks
   end
 
   # GET /tasks/1
@@ -28,14 +28,14 @@ class TasksController < ApplicationController
   def create
     #@task = Task.new(task_params)
      @task = @project.tasks.create(task_params)
-     redirect_to project_path(@project), notice: 'Task was successfully created.' 
+     redirect_to project_tasks_path, notice: 'Task was successfully created.' 
   end
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
     @task.update(task_params)
-    redirect_to project_path(@project), notice: 'Task was successfully updated.'
+    redirect_to project_tasks_path, notice: 'Task was successfully updated.'
   end
 
   # DELETE /tasks/1
