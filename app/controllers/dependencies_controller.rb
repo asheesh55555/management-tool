@@ -7,7 +7,7 @@ class DependenciesController < ApplicationController
   # GET /dependencies
   # GET /dependencies.json
   def index
-    @dependencies = Dependency.all
+    @dependencies = @task.dependencies
   end
 
   # GET /dependencies/1
@@ -29,7 +29,7 @@ class DependenciesController < ApplicationController
   def create
     #@dependency = Dependency.new(dependency_params)
     @dependency = @task.dependencies.create(dependency_params)
-    redirect_to project_path(@project), notice: 'Dependency was successfully created.'
+    redirect_to project_task_dependencies_path(@project, @task), notice: 'Dependency was successfully created.'
        
   end
 
@@ -37,7 +37,7 @@ class DependenciesController < ApplicationController
   # PATCH/PUT /dependencies/1.json
   def update
       @dependency.update(dependency_params)
-      redirect_to project_path(@project), notice: 'Dependency was successfully updated.' 
+      redirect_to project_task_dependencies_path(@project, @task), notice: 'Dependency was successfully updated.' 
      
   end
 
@@ -45,7 +45,7 @@ class DependenciesController < ApplicationController
   # DELETE /dependencies/1.json
   def destroy
     @dependency.destroy
-    redirect_to project_path(@project), notice: 'Dependency was successfully destroyed.' 
+    redirect_to project_task_dependencies_path(@project, @task), notice: 'Dependency was successfully destroyed.' 
       
   end
 
