@@ -61,3 +61,5 @@ gem 'jquery-rails'
 gem 'momentjs-rails', '~> 2.9', :github => 'derekprior/momentjs-rails'
 gem "datetime_picker_rails", github: "graysonwright/datetime_picker_rails"
 
+gem "select2-rails"
+

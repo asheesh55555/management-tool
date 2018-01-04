@@ -15,5 +15,6 @@
 //= require_tree ./js
 //= require moment
 //= require datetime_picker
+//= require select2-full
 //= require_tree .
 

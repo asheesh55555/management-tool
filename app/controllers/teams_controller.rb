@@ -68,10 +68,10 @@ class TeamsController < ApplicationController
   end
 
   def assigned
-    if ProjectTeam.where(assign_params).first.present?
-      flash[:notice] = "This Project already assingned to this Team."
-    else
-      ProjectTeam.create(assign_params)
+    projects = params[:assign_project][:project_id]-[""]
+    @team.projects.destroy_all
+    projects.each do |project_id|
+      ProjectTeam.create(team_id: params[:assign_project][:team_id], project_id: project_id)
       flash[:notice] = "This Project assingned to this Team successfully"
     end
     redirect_to team_path()
