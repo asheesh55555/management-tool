@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   
   resources :clients
   resources :technologies
-  resources :teams
+  resources :teams do
+    member do
+      get :assign
+      post :assigned
+    end
+  end
   resources :projects do
        resources :tasks do
             resources :dependencies
