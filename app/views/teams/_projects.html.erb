@@ -7,7 +7,7 @@
   <tbody>
       <tr>
           <% projects.each do |p|%>
-          <td><li class="list-group-item"><%= link_to "#{p.name}", '#' %></li></td>
+          <td><li class="list-group-item"><%= link_to "#{p.name}", project_path(p) %></li></td>
           <% end %>
       </tr>
   </tbody>

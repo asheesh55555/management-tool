@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy, :assign_project, :assigned_project, :assign_member, :assigned_member, :assign_member_project, :assigned_member_project, :assigned_member_project_task, :member_project_task]
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :assign_project, :assigned_project, :assign_member, :assigned_member, :assign_member_project, :assigned_member_project, :assigned_member_project_task, :member_project_task, :users_details]
   before_action :set_permission, only: [:new, :edit, :update, :destroy]
 
 
@@ -82,12 +82,11 @@ class TeamsController < ApplicationController
   end
 
   def assigned_member
-
-    if params[:assign_member][:user_id].present?
-        User.find(params[:assign_member][:user_id]).update(team_id: params[:assign_member][:team_id])
-      end
-   
-    
+    users = params[:assign_member][:user_id]-[""]
+    users.each do |user_id|
+       User.find(user_id).update(team_id: params[:assign_member][:team_id])
+    end
+    redirect_to team_path()
   end
 
   def assign_member_project
@@ -115,7 +114,7 @@ class TeamsController < ApplicationController
            UserProject.create(assigned_member_project_params)
                 flash[:notice] = "Project assigned."
         end
-          
+      
   end
 
   def assigned_member_project_task
@@ -139,6 +138,10 @@ class TeamsController < ApplicationController
   def member_project_task
    @user = User.find(params[:user_id])
   end
+
+   def users_details
+     @user = User.find(params[:user_id])
+   end 
 
 
   private

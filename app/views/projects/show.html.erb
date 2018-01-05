@@ -12,12 +12,12 @@
   <strong>Technology:</strong>
   <%= @project.technology %>
 </p>
-
 <p>
   <strong>Document:</strong>
-  <%= image_tag @project.document.url(:thumb) %>
+  <% if @project.document.present?%>
+    <%= image_tag @project.document.url(:thumb) %>
+  <% end %>
 </p>
-
 <p>
   <strong>Project type:</strong>
   <%= @project.project_type %>

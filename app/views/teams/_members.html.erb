@@ -7,7 +7,8 @@
   <tbody>
       <tr>
           <% members.each do |m|%>
-          <td><li class="list-group-item"><%= link_to "#{m.email}", member_project_task_team_path(@team, user_id: m) %></li></td>
+          <td><li class="list-group-item"><%= link_to "#{m.email}", users_details_team_path(@team,
+          m) %></li></td>
           <% end %>
       </tr>
   </tbody>

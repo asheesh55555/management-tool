@@ -2,17 +2,10 @@
   <% if ApplicationAuthorizer.creatable_by?(current_user) %>
     <li class="list-group-item"><%= link_to 'All Projects', projects_path %></li>
     <li class="list-group-item"><%= link_to 'Teams', teams_path %></li>
-    
-    <% if Team.any? %>
-      <li class="list-group-item"><%= link_to 'Assigned Projects to Teams', assigned_project_path %></li>
-  	<% end %>
-
-		<% if MemberTask.any? %>
-		  <li class="list-group-item"><%= link_to 'All Assigned Task ', all_assigned_task_path %></li>
-		<% end %>
-
   <% else %>
-    <li class="list-group-item"><%= link_to 'All Project and Task', all_assigned_task_user_path %></li>
+     <% if current_user.team.present? %>
+      <li class="list-group-item"><%= link_to 'All Project and Task', users_details_team_path(current_user.team , current_user) %></li>
+      <% end %>
   <% end %>
 
 </ul>
