@@ -18,7 +18,7 @@
 
    <div class="field">
     <%= f.label :task %>
-    <%= f.select("task_id", @un_assigned_task.collect {|t| [ t.name, t.id ] }, { include_blank: true }, :prompt => 'Select')%>
+    <%= f.select("task_id", @un_assigned_task.collect {|t| [ t.name, t.id ] })%>
     <%= f.hidden_field :team_id, value: @team.id %>
     <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.hidden_field :project_id, value: @project.id %>

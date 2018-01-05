@@ -1,16 +1,6 @@
+<h4><%= @team.name%> Team Assigned Projects</h4>
+<%= render 'projects' , projects: @team.projects%>
+<h4><%= @team.name%> Team Assigned Members</h4>
+<%= render 'members' , members: @team.users%>
 
-<p>
-  <strong>Team Name:</strong>
-  <%= @team.name %>
-</p>
-<table>
-  <thead>
-    <tr>
-      <th>Project Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-	<%= render 'projects/project', project: @team.projects %>
-</table>
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+

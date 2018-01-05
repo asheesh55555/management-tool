@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <% members.each do |m|%>
+          <td><li class="list-group-item"><%= link_to "#{m.email}", member_project_task_team_path(@team, user_id: m) %></li></td>
+          <% end %>
+      </tr>
+  </tbody>
+</table>

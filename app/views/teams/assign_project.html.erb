@@ -7,7 +7,7 @@
 
   <div class="field">
     <%= f.label :project %>
-    <%= f.select("project_id", @projects.collect {|p| [ p.name, p.id ] }, { include_blank: true }, :prompt => 'Select')%>
+    <%= f.select("project_id", @projects.collect {|p| [ p.name, p.id ] })%>
   </div>
   
   <p>

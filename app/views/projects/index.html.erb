@@ -22,7 +22,7 @@
         <td><%= project.name %></td>
         <td><%= project.descriptions %></td>
         <td><%= project.technology %></td>
-        <td><%= image_tag project.document %></td>
+        <td><%= image_tag project.document.url(:thumb) %></td>
         <td><%= project.project_type %></td>
         <td><%= project.client_name %></td>
         <td><%= project.cost %></td>

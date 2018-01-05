@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       get :assign_member_project
       post :assigned_member_project
       post :assigned_member_project_task
+      get :member_project_task
 
     end
   end

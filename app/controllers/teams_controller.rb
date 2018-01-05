@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy, :assign_project, :assigned_project, :assign_member, :assigned_member, :assign_member_project, :assigned_member_project, :assigned_member_project_task]
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :assign_project, :assigned_project, :assign_member, :assigned_member, :assign_member_project, :assigned_member_project, :assigned_member_project_task, :member_project_task]
   before_action :set_permission, only: [:new, :edit, :update, :destroy]
 
 
@@ -74,7 +74,7 @@ class TeamsController < ApplicationController
       ProjectTeam.create(assign_params)
       flash[:notice] = "This Project assingned to this Team successfully"
     end
-    redirect_to team_path()
+    #redirect_to team_path()
   end
 
   def assign_member
@@ -134,6 +134,10 @@ class TeamsController < ApplicationController
          end
          @tasks = MemberTask.where(team_id: @user.team.id,  user_id: user_id, project_id: project_id)
     
+  end
+
+  def member_project_task
+   @user = User.find(params[:user_id])
   end
 
 

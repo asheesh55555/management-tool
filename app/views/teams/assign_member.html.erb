@@ -8,7 +8,7 @@
   
    <div class="field">
     <%= f.label :user %>
-    <%= f.select("user_id", @users.collect {|u| [ u.email, u.id ] }, { include_blank: true }, :prompt => 'Select')%>
+    <%= f.select("user_id", @users.collect {|u| [ u.email, u.id ] })%>
   </div>
   
   <p>
