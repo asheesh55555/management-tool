@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy, :assign, :assigned]
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :assign_project, :assigned_project, :assign_member, :assigned_member, :assign_member_project, :assigned_member_project, :assigned_member_project_task, :member_project_task]
   before_action :set_permission, only: [:new, :edit, :update, :destroy]
 
 
@@ -63,18 +63,81 @@ class TeamsController < ApplicationController
     end
   end
 
-  def assign
+  def assign_project
     @projects = Project.all
   end
 
-  def assigned
+
+  def assigned_project
     projects = params[:assign_project][:project_id]-[""]
     @team.projects.destroy_all
     projects.each do |project_id|
       ProjectTeam.create(team_id: params[:assign_project][:team_id], project_id: project_id)
-      flash[:notice] = "This Project assingned to this Team successfully"
     end
     redirect_to team_path()
+  end
+
+  def assign_member
+      @users =  User.where(team_id: nil)
+  end
+
+  def assigned_member
+
+    if params[:assign_member][:user_id].present?
+        User.find(params[:assign_member][:user_id]).update(team_id: params[:assign_member][:team_id])
+      end
+   
+    
+  end
+
+  def assign_member_project
+    @projects = @team.projects
+    @users = @team.users
+  end
+
+  def assigned_member_project
+        user_id = params[:assign_project_member][:user_id]
+        project_id = params[:assign_project_member][:project_id]
+        @user = User.find(user_id)
+        @project = Project.find(project_id)
+        @tasks=MemberTask.where(team_id: User.find(user_id).team.id,  user_id: user_id, project_id: project_id)
+       
+        @un_assigned_task = []
+        @project.tasks.each do |t|
+            unless MemberTask.where(task_id: t.id).first.present?
+              @un_assigned_task.push(t)
+            end
+        end
+
+        if UserProject.where(user_id: user_id, project_id: project_id).first.present?
+                flash[:notice] = "This Project already assingned to this member please assign task."
+        else
+           UserProject.create(assigned_member_project_params)
+                flash[:notice] = "Project assigned."
+        end
+          
+  end
+
+  def assigned_member_project_task
+        if params[:assign_project_task_team_member][:task_id].present?
+           MemberTask.create(assigned_member_project_task_params)
+         end
+         user_id = params[:assign_project_task_team_member][:user_id] 
+         project_id = params[:assign_project_task_team_member][:project_id]
+         @user = User.find(user_id)
+         @project = Project.find(project_id)
+         @un_assigned_task = []
+         @project.tasks.each do |t|
+            unless MemberTask.where(task_id: t.id).first.present?
+              @un_assigned_task.push(t)
+            end
+         end
+         @tasks = MemberTask.where(team_id: @user.team.id,  user_id: user_id, project_id: project_id)
+    
+  end
+
+  def member_project_task
+   @user = User.find(params[:user_id])
   end
 
 
@@ -97,5 +160,12 @@ class TeamsController < ApplicationController
 
     def assign_params
       params.require(:assign_project).permit(:project_id, :team_id)
+    end
+
+    def assigned_member_project_params
+      params.require(:assign_project_member).permit(:user_id, :project_id)
+    end
+    def assigned_member_project_task_params
+       params.require(:assign_project_task_team_member).permit(:task_id, :team_id, :user_id, :project_id)
     end
 end

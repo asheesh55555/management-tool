@@ -15,7 +15,7 @@
       <tr>
         <td><%= team.name %></td>
         <% team.projects.each_with_index do |project|%>
-        	<td><li class="list-group-item"><%= link_to "#{project.name}", '#' %></li></td>
+          <td><li class="list-group-item"><%= link_to "#{project.name}", '#' %></li></td>
         <% end %>
         <% if assigned %>
           <% team.users.each do |member|%>
