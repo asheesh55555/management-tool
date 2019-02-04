@@ -7,3 +7,14 @@ development:
   password: root
   host: localhost
 
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: management12345
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+
+
+
